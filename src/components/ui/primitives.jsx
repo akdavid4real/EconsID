@@ -74,10 +74,13 @@ export function Button({
 }
 
 export function Card({ children, className }) {
+  const hasCustomBg = className?.includes("bg-");
+
   return (
     <section
       className={cn(
-        "rounded-[26px] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-[0_10px_28px_rgba(7,24,47,0.06)]",
+        "rounded-[26px] border border-[var(--color-border)] p-5 shadow-[0_10px_28px_rgba(7,24,47,0.06)]",
+        !hasCustomBg && "bg-[var(--color-surface)]",
         className
       )}
     >
