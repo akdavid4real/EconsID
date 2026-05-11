@@ -267,8 +267,9 @@ export function ShareProfileScreen({ traderId }) {
     <MarketingShell>
       <div className="mx-auto grid max-w-4xl gap-5">
         <BrandMark />
-        <Card className="overflow-hidden bg-[var(--color-shell)] text-white">
-          <div className="grid gap-6 md:grid-cols-[0.8fr_1.2fr]">
+        <Card className="relative overflow-hidden !bg-[var(--color-shell)] text-white">
+          <div className="absolute inset-x-0 top-0 h-32 bg-[linear-gradient(90deg,rgba(25,181,107,0.3),rgba(184,135,43,0.25))]" />
+          <div className="relative grid gap-6 md:grid-cols-[0.8fr_1.2fr]">
             <div>
               <Badge tone="gold">Shared profile</Badge>
               <p className="mt-4 text-sm text-white/80">{traderId}</p>

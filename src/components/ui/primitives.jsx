@@ -183,7 +183,7 @@ export function ProgressRing({ score, max = 850, label = "EconID Score" }) {
   const angle = (score / max) * 360;
 
   return (
-    <Card className="relative overflow-hidden bg-[var(--color-shell)] text-white">
+    <Card className="relative overflow-hidden !bg-[var(--color-shell)] text-white">
       <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(90deg,rgba(25,181,107,0.35),rgba(246,184,63,0.32))]" />
       <div className="relative grid gap-5 sm:grid-cols-[190px_1fr] sm:items-center">
         <div

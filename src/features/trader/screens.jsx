@@ -160,7 +160,7 @@ export function IdentityScreen() {
           ))}
         </div>
       </Card>
-      <Card className="space-y-4 bg-[var(--color-shell)] text-white">
+      <Card className="space-y-4 !bg-[var(--color-shell)] text-white">
         <SectionTitle tone="dark" title="Share this link" body="A lender can open it and see the score straight away." />
         <div className="grid place-items-center rounded-3xl bg-white p-8 text-[var(--color-ink)]">
           <div className="grid h-36 w-36 place-items-center rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] text-center text-xs font-bold text-[var(--color-muted)]">
@@ -178,7 +178,7 @@ export function IdentityScreen() {
 export function InsuranceOverviewScreen() {
   return (
     <AppShell title="Protection" subtitle="Daily cover for stock, stall, and income" current="/dashboard/insurance">
-      <Card className="space-y-5 bg-[var(--color-shell)] text-white">
+      <Card className="space-y-5 !bg-[var(--color-shell)] text-white">
         <div className="flex items-center justify-between">
           <Badge tone="gold">Active policy</Badge>
           <ShieldCheck className="h-8 w-8 text-[var(--color-gold)]" aria-hidden="true" />
@@ -295,7 +295,7 @@ export function InsuranceClaimDetailScreen({ claimId }) {
 export function CreditOverviewScreen() {
   return (
     <AppShell title="Working Capital" subtitle="Credit earned from daily trade" current="/dashboard/credit">
-      <Card className="space-y-5 bg-[var(--color-shell)] text-white">
+      <Card className="space-y-5 !bg-[var(--color-shell)] text-white">
         <Badge tone="gold">Tier 2 eligible</Badge>
         <div>
           <p className="text-sm text-white/85">You can apply for</p>
