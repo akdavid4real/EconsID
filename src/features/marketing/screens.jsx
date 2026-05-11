@@ -51,7 +51,7 @@ function MarketVisual({ trader }) {
         </div>
         <div className="grid grid-cols-[1fr_auto] items-end gap-4">
           <div>
-            <p className="text-sm text-white/70">Mama Titi trust score</p>
+            <p className="text-sm text-white/85">Mama Titi trust score</p>
             <p className="mt-1 text-6xl font-black tracking-tight">{trader.score}</p>
           </div>
           <div className="grid h-24 w-24 place-items-center rounded-full bg-white/10">
@@ -162,11 +162,11 @@ export function OnboardingScreen({ step }) {
         <div className="rounded-[30px] bg-[var(--color-shell)] p-4 text-white shadow-[0_20px_54px_rgba(7,24,47,0.18)]">
           <div className="mb-5 flex items-center justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/60">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/80">
                 Step {step + 1} of 4
               </p>
               <p className="mt-1 text-2xl font-black">{stepMeta.title}</p>
-              <p className="mt-1 text-sm text-white/70">{stepMeta.caption}</p>
+              <p className="mt-1 text-sm text-white/85">{stepMeta.caption}</p>
             </div>
             <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10">
               {step < 2 ? <Phone className="h-6 w-6" /> : <Store className="h-6 w-6" />}
@@ -249,7 +249,7 @@ export function OnboardingScreen({ step }) {
                   Squad sandbox account
                 </p>
                 <p className="mt-2 text-4xl font-black">{demoData.trader.virtualAccount}</p>
-                <p className="mt-2 text-sm text-white/75">This is where customer payments will land.</p>
+                <p className="mt-2 text-sm text-white/85">This is where customer payments will land.</p>
               </div>
               <Button as="link" href="/dashboard" tone="gold">
                 Finish setup
@@ -271,9 +271,9 @@ export function ShareProfileScreen({ traderId }) {
           <div className="grid gap-6 md:grid-cols-[0.8fr_1.2fr]">
             <div>
               <Badge tone="gold">Shared profile</Badge>
-              <p className="mt-4 text-sm text-white/65">{traderId}</p>
+              <p className="mt-4 text-sm text-white/80">{traderId}</p>
               <p className="mt-2 text-6xl font-black">{demoData.trader.score}</p>
-              <p className="text-sm text-white/70">Trust score out of 850</p>
+              <p className="text-sm text-white/85">Trust score out of 850</p>
               <div className="mt-5 grid gap-2">
                 <div className="rounded-2xl bg-white/10 p-3 text-sm">
                   Show this to a lender

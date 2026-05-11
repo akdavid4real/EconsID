@@ -184,9 +184,9 @@ export function InsuranceOverviewScreen() {
           <ShieldCheck className="h-8 w-8 text-[var(--color-gold)]" aria-hidden="true" />
         </div>
         <div>
-          <p className="text-sm text-white/65">Your cover now</p>
+          <p className="text-sm text-white/85">Your cover now</p>
           <p className="mt-1 text-5xl font-black">{formatCurrency(trader.coverage.amount)}</p>
-          <p className="mt-2 text-sm text-white/75">{trader.coverage.daysCovered} days covered - {trader.coverage.activePlan}</p>
+          <p className="mt-2 text-sm text-white/90">{trader.coverage.daysCovered} days covered - {trader.coverage.activePlan}</p>
         </div>
         <div className="grid grid-cols-2 gap-3">
           <Button as="link" href="/dashboard/insurance/claim" tone="gold">
@@ -298,9 +298,9 @@ export function CreditOverviewScreen() {
       <Card className="space-y-5 bg-[var(--color-shell)] text-white">
         <Badge tone="gold">Tier 2 eligible</Badge>
         <div>
-          <p className="text-sm text-white/65">You can apply for</p>
+          <p className="text-sm text-white/85">You can apply for</p>
           <p className="mt-1 text-5xl font-black">{formatCurrency(trader.availableCredit)}</p>
-          <p className="mt-2 text-sm text-white/75">Based on your score, repayment history, and active inflows.</p>
+          <p className="mt-2 text-sm text-white/90">Based on your score, repayment history, and active inflows.</p>
         </div>
         <Button as="link" href="/dashboard/credit/apply" tone="gold">
           Apply now

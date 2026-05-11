@@ -174,7 +174,7 @@ export function SectionTitle({ title, body, tone = "light" }) {
   return (
     <header className="space-y-1">
       <h2 className={cn("text-xl font-bold tracking-tight", dark ? "text-white" : "text-[var(--color-ink)]")}>{title}</h2>
-      {body ? <p className={cn("text-sm leading-6", dark ? "text-white/72" : "text-[var(--color-muted)]")}>{body}</p> : null}
+      {body ? <p className={cn("text-sm leading-6", dark ? "text-white/85" : "text-[var(--color-muted)]")}>{body}</p> : null}
     </header>
   );
 }
@@ -209,11 +209,11 @@ export function ProgressRing({ score, max = 850, label = "EconID Score" }) {
           </p>
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-2xl bg-white/10 p-3">
-              <p className="text-xs text-white/65">Risk level</p>
+              <p className="text-xs text-white/80">Risk level</p>
               <p className="mt-1 font-semibold">Medium-low</p>
             </div>
             <div className="rounded-2xl bg-white/10 p-3">
-              <p className="text-xs text-white/65">Signal source</p>
+              <p className="text-xs text-white/80">Signal source</p>
               <p className="mt-1 font-semibold">90-day inflows</p>
             </div>
           </div>
@@ -268,7 +268,7 @@ export function ActionTile({
 
 export function LockedOverlay({ title = "Locked", body }) {
   return (
-    <div className="absolute inset-0 grid place-items-center rounded-[26px] bg-white/75 p-6 text-center backdrop-blur-sm">
+    <div className="absolute inset-0 grid place-items-center rounded-[26px] bg-white/85 p-6 text-center backdrop-blur-sm">
       <div>
         <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-white text-[var(--color-primary)] shadow">
           <LockKeyhole className="h-5 w-5" aria-hidden="true" />
