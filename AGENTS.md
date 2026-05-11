@@ -1,5 +1,9 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# EconID Working Rules
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+- Keep the repo demo-first. Favor believable product flow over enterprise completeness.
+- Keep all business logic in Next.js services and route handlers.
+- Use Supabase for infrastructure only: auth, database, and image storage.
+- Keep SquadCo access behind adapter modules in `src/server/adapters`.
+- Reuse shared UI primitives and route shells before adding page-local patterns.
+- Preserve one score scale across the app: `0-850`.
+- Prefer skeletons and seeded demo data over broken live dependencies.

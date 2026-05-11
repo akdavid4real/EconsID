@@ -1,0 +1,5 @@
+.next
+node_modules
+docs/references/plan
+docs/references/mockups
+pnpm-lock.yaml
