@@ -37,6 +37,7 @@ export function Button({
   className,
   tone = "primary",
   icon = true,
+  ...props
 }) {
   const styles = {
     primary:
@@ -70,7 +71,11 @@ export function Button({
     );
   }
 
-  return <button className={shared}>{content}</button>;
+  return (
+    <button {...props} className={shared}>
+      {content}
+    </button>
+  );
 }
 
 export function Card({ children, className }) {

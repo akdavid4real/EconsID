@@ -15,6 +15,8 @@ export function getScoreFallback() {
     creditTier: 2,
     riskFlags: [],
     averageWeeklyRevenue: demoData.trader.weeklyRevenue,
+    ninetyDayInflow: demoData.trader.inflow90d,
+    story: demoData.trader.story,
   };
 }
 

@@ -28,6 +28,7 @@ export function MarketingShell({ children }) {
 export function AppShell({
   title,
   subtitle,
+  rightLabel,
   navKind = "trader",
   current,
   children,
@@ -37,7 +38,7 @@ export function AppShell({
 
   return (
     <div className="phone-safe min-h-screen">
-      <TopBar title={title} subtitle={subtitle} />
+      <TopBar title={title} subtitle={subtitle} rightLabel={rightLabel} />
       <main
         className={cn(
           "mx-auto flex max-w-6xl flex-col gap-5 px-4 py-5 sm:px-6 lg:px-8",

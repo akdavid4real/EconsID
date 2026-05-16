@@ -2,7 +2,6 @@ import {
   BadgeCheck,
   Building2,
   Landmark,
-  LockKeyhole,
   Phone,
   ShieldCheck,
   Store,
@@ -14,14 +13,14 @@ import {
   Badge,
   Button,
   Card,
-  Field,
-  Input,
   PageIntro,
   SectionTitle,
-  Select,
 } from "@/components/ui/primitives";
 import { demoData } from "@/lib/demo-data";
 import { formatCurrency } from "@/lib/format";
+import { LenderLoginForm } from "@/features/auth/lender-login-form";
+import { TraderLoginForm } from "@/features/auth/trader-login-form";
+import { OnboardingClient } from "@/features/marketing/onboarding-client";
 
 function BrandMark() {
   return (
@@ -51,7 +50,7 @@ function MarketVisual({ trader }) {
         </div>
         <div className="grid grid-cols-[1fr_auto] items-end gap-4">
           <div>
-            <p className="text-sm text-white/85">Mama Titi trust score</p>
+            <p className="text-sm text-white/85">Starter trust score view</p>
             <p className="mt-1 text-6xl font-black tracking-tight">{trader.score}</p>
           </div>
           <div className="grid h-24 w-24 place-items-center rounded-full bg-white/10">
@@ -66,10 +65,10 @@ function MarketVisual({ trader }) {
           ))}
         </div>
         <div className="rounded-3xl bg-white p-4 text-[var(--color-ink)]">
-          <p className="text-sm font-bold">Next unlocked action</p>
+          <p className="text-sm font-bold">What EconID can unlock</p>
           <p className="mt-1 text-2xl font-black">{formatCurrency(trader.availableCredit)}</p>
           <p className="mt-1 text-sm text-[var(--color-muted)]">
-            Working capital offer ready for review.
+            Credit and cover open once your trade activity is saved.
           </p>
         </div>
       </div>
@@ -84,9 +83,14 @@ export function LandingScreen() {
     <MarketingShell>
       <header className="flex items-center justify-between">
         <BrandMark />
-        <Button as="link" href="/lender" tone="secondary" className="min-h-10 px-4" icon={false}>
-          Lenders
-        </Button>
+        <div className="flex items-center gap-3">
+          <Button as="link" href="/login" tone="secondary" className="min-h-10 px-4" icon={false}>
+            Trader login
+          </Button>
+          <Button as="link" href="/lender/login" tone="secondary" className="min-h-10 px-4" icon={false}>
+            Lenders
+          </Button>
+        </div>
       </header>
 
       <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -94,14 +98,14 @@ export function LandingScreen() {
           <PageIntro
             eyebrow="For market traders"
             title="Show your trade. Get a score."
-            body="EconID turns the money already moving through your shop into one simple profile for cover and credit."
+            body="EconID turns your everyday trade activity into one simple profile lenders and insurers can actually use."
             actions={
               <>
                 <Button as="link" href="/onboard" tone="gold">
                   Start with phone number
                 </Button>
-                <Button as="link" href="/share/trd-mama-titi" tone="secondary">
-                  See sample profile
+                <Button as="link" href="/login" tone="secondary">
+                  Trader login
                 </Button>
               </>
             }
@@ -115,16 +119,22 @@ export function LandingScreen() {
             />
             <ActionTile
               icon={ShieldCheck}
+              title="Already have an account?"
+              body="Sign in to open your dashboard and continue from saved data."
+              href="/login"
+            />
+            <ActionTile
+              icon={ShieldCheck}
               title="Add cover"
-              body="Pick a daily plan that matches your shop."
+              body="Pick a simple daily plan that matches your shop."
               href="/dashboard/insurance"
               tone="gold"
             />
             <ActionTile
               icon={Landmark}
               title="Borrow with proof"
-              body="Lenders see your score and recent trade history."
-              href="/lender"
+              body="Lenders review your score, profile, and saved activity in one place."
+              href="/lender/login"
             />
           </div>
         </div>
@@ -137,9 +147,9 @@ export function LandingScreen() {
           ["2. Build", "Your score grows from real payments."],
           ["3. Unlock", "Cover and credit open as your score rises."],
         ].map(([title, body]) => (
-          <Card key={title} className="space-y-2">
-            <SectionTitle title={title} body={body} />
-          </Card>
+        <Card key={title} className="space-y-2">
+          <SectionTitle title={title} body={body} />
+        </Card>
         ))}
       </section>
     </MarketingShell>
@@ -183,79 +193,13 @@ export function OnboardingScreen({ step }) {
         </div>
 
         <Card className="space-y-5">
-          {step === 0 ? (
-            <div className="grid gap-4">
-              <Field label="Phone Number">
-                <Input placeholder="+234 801 234 5678" inputMode="tel" />
-              </Field>
-              <Button as="link" href="/onboard/verify" tone="gold">
-                Send OTP
-              </Button>
-              <p className="text-sm text-[var(--color-muted)]">We only use this to open your account.</p>
-            </div>
-          ) : null}
-
-          {step === 1 ? (
-            <div className="grid gap-4">
-              <Field label="6-digit OTP">
-                <Input placeholder="123456" inputMode="numeric" />
-              </Field>
-              <Button as="link" href="/onboard/profile" tone="gold">
-                Verify phone
-              </Button>
-              <p className="text-sm text-[var(--color-muted)]">Check your SMS and enter the code here.</p>
-            </div>
-          ) : null}
-
-          {step === 2 ? (
-            <div className="grid gap-4">
-              <Field label="Full Name">
-                <Input placeholder="Mama Titi" />
-              </Field>
-              <Field label="Market or Business Name">
-                <Input placeholder="Balogun Market Stall A1" />
-              </Field>
-              <Field label="Trade Category">
-                <Select defaultValue="fabric">
-                  <option value="fabric">Fabric</option>
-                  <option value="electronics">Electronics</option>
-                  <option value="food">Food</option>
-                </Select>
-              </Field>
-              <div className="flex gap-3 rounded-3xl bg-[var(--color-gold-soft)] p-4">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-2xl bg-white text-[#7a5512]">
-                  <LockKeyhole className="h-4 w-4" aria-hidden="true" />
-                </span>
-                <p className="text-sm leading-6 text-[#6c4d14]">
-                  We use your trade activity to build your score. Nothing else.
-                </p>
-              </div>
-              <Button as="link" href="/onboard/account" tone="gold">
-                Continue
-              </Button>
-            </div>
-          ) : null}
-
-          {step === 3 ? (
-            <div className="grid gap-4">
-              <Field label="Bank Name">
-                <Input placeholder="Wema Bank" />
-              </Field>
-              <Field label="Account Number">
-                <Input placeholder="0123456789" inputMode="numeric" />
-              </Field>
-              <div className="rounded-3xl bg-[var(--color-shell)] p-5 text-white">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/60">
-                  Squad sandbox account
-                </p>
-                <p className="mt-2 text-4xl font-black">{demoData.trader.virtualAccount}</p>
-                <p className="mt-2 text-sm text-white/85">This is where customer payments will land.</p>
-              </div>
-              <Button as="link" href="/dashboard" tone="gold">
-                Finish setup
-              </Button>
-            </div>
-          ) : null}
+          <OnboardingClient step={step} />
+        </Card>
+        <Card className="space-y-3 bg-[var(--color-surface-alt)]">
+          <SectionTitle title="Already registered?" body="Use your trader account to sign in instead of starting over." />
+          <Button as="link" href="/login" tone="secondary" className="w-full justify-center" icon={false}>
+            Trader login
+          </Button>
         </Card>
       </div>
     </MarketingShell>
@@ -277,13 +221,13 @@ export function ShareProfileScreen({ traderId }) {
               <p className="text-sm text-white/85">Trust score out of 850</p>
               <div className="mt-5 grid gap-2">
                 <div className="rounded-2xl bg-white/10 p-3 text-sm">
-                  Show this to a lender
+                  Share this with a lender
                 </div>
                 <div className="rounded-2xl bg-white/10 p-3 text-sm">
-                  They can check your score
+                  They can open the score quickly
                 </div>
                 <div className="rounded-2xl bg-white/10 p-3 text-sm">
-                  They do not need your forms
+                  They do not need extra forms first
                 </div>
               </div>
             </div>
@@ -314,23 +258,38 @@ export function LenderLoginScreen() {
           <PageIntro
             eyebrow="Lender access"
             title="Open a trader profile."
-            body="See the score, recent payments, and the next action in one place."
+            body="Sign in to review saved trader profiles, score snapshots, requests, and provider activity."
           />
-          <Field label="Work Email">
-            <Input placeholder="credit@institution.ng" />
-          </Field>
-          <Field label="Password">
-            <Input placeholder="Enter password" type="password" />
-          </Field>
-          <Button as="link" href="/lender">
-            Continue to portal
-          </Button>
+          <LenderLoginForm />
         </Card>
         <ActionTile
           icon={Building2}
-          title="Demo lender view"
-          body="Use seeded traders and loan health while auth is wired."
-          href="/lender"
+          title="Lender workspace"
+          body="Use a lender or admin account to open the saved workspace."
+        />
+      </div>
+    </MarketingShell>
+  );
+}
+
+export function TraderLoginScreen() {
+  return (
+    <MarketingShell>
+      <div className="mx-auto w-full max-w-xl space-y-5">
+        <BrandMark />
+        <Card className="space-y-5">
+          <PageIntro
+            eyebrow="Trader access"
+            title="Open your dashboard."
+            body="Sign in with the trader account you created during onboarding to continue from your saved EconID data."
+          />
+          <TraderLoginForm />
+        </Card>
+        <ActionTile
+          icon={Phone}
+          title="Need an account first?"
+          body="Start onboarding to create your trader profile and sign-in details."
+          href="/onboard"
         />
       </div>
     </MarketingShell>

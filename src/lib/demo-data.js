@@ -68,8 +68,8 @@ export const demoData = {
   },
   onboardingSteps: [
     { slug: "start", title: "Phone Number", caption: "Use OTP to start a trader profile." },
-    { slug: "verify", title: "Verify OTP", caption: "Confirm the phone number to continue." },
+    { slug: "verify", title: "Secure Account", caption: "Add email and password for your live EconID sign-in." },
     { slug: "profile", title: "Business Details", caption: "Capture legal name, market name, and trade category." },
-    { slug: "account", title: "Bank Details", caption: "Attach the payout account and create the Squad virtual account." },
+    { slug: "account", title: "Bank Details", caption: "Attach the payout account, then create the live trader record." },
   ],
 };

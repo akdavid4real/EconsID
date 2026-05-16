@@ -6,5 +6,9 @@ export function getSupabaseBrowserClient() {
     return null;
   }
 
-  return createClient(env.supabaseUrl, env.supabaseAnonKey);
+  if (!globalThis.__ECONID_SUPABASE_BROWSER__) {
+    globalThis.__ECONID_SUPABASE_BROWSER__ = createClient(env.supabaseUrl, env.supabaseAnonKey);
+  }
+
+  return globalThis.__ECONID_SUPABASE_BROWSER__;
 }
